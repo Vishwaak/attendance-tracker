@@ -2,7 +2,7 @@ import getpass
 import json
 import sys
 import requests
-file_path = "./"
+
 
 def get_and_save_auth_token():
     print("Enter your amFOSS website username and password.")

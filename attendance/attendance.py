@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# created by Chirath R <chirath.02@gmail.com>
+# created by Xerous <chandranvishwaak@gmail.com>
 
 from datetime import datetime
 import sys
@@ -10,7 +10,7 @@ from urllib.request import urlopen
 from subprocess import Popen, PIPE
 
 
-file_path = "./"
+file_path = "/opt/attendance/"
 
 
 
