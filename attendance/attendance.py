@@ -32,6 +32,7 @@ def get_bssid_list():
             list_bssid.append(line.split("Address:"))
         lister = dict(list_bssid)
         ssid_list = list(lister.values())
+        ssid_list = list(map(lambda s: s.strip(), ssid_list))
     return ssid_list
 
 
@@ -48,17 +49,17 @@ def get_auth_token():
 def mark_attendance(lister , credentials):
 
     timestamp = datetime.now().isoformat()
-    
-    data = {'username': credentials['username'], 'password': credentials['password'],'start': timestamp,
-            'end': timestamp,'list': lister  , 'token':"sadsa"}
+    data = {'username': credentials['username'],'password': credentials['password'],'time': timestamp,'list': str(lister)  , 'secret':"sadsa"}
     variables = json.dumps(data)
     url = 'https://api.amfoss.in/?'
     mutation = '''
-        mutation($username: String!,$password: String!, $start: DateTime!, $end: DateTime!, $token: String!, $list: String!){
-            LogAttendance(username: $username, password: $password, start: $start, end: $end, token: $token, list: $list){
-                id
-            }
-        }
+       mutation($username: String!, $password: String!, $time: DateTime!, $secret: String!, $list: String!)
+            {
+  LogAttendance(username: $username, password: $password,time: $time, secret: $secret, list: $list)
+    {
+    id
+    }
+}
     '''
     r = requests.post(url, json={'query': mutation, 'variables': variables})
     print(r.content)
