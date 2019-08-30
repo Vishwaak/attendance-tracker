@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# created by Xerous <chandranvishwaak@gmail.com>
+# Copyright (c) 2017-2019, The amFOSS contributors. All rights reserved
 
 from datetime import datetime
 import sys
