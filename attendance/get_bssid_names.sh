@@ -13,7 +13,7 @@ case "${unameOut}" in
 esac
 #echo ${machine}
 if [ "$machine" = "Mac" ];then    
-    /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport -s | awk '{print $1}'
+    /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/sbin/airport -s | awk '{print $2}'
 else
     interface=`ip link | grep -Po '^\d+:\s+\K[^:]+' | grep 'w'`
     sudo iwlist $interface scan | grep Address  > list.txt
