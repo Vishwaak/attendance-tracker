@@ -8,11 +8,14 @@ import json
 import requests
 from urllib.request import urlopen
 from subprocess import Popen, PIPE
+from os.path import expanduser
+from sys import platform as _platform
 
-
-file_path = "/opt/attendance/"
-
-
+if _platform == "linux" or _platform == "linux2":
+    file_path = "/opt/attendance/"
+elif _platform == "darwin":
+    home = expanduser("~")
+    file_path = home+"/.amfoss/"
 
 def check_internet_connection():
     try:
