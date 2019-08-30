@@ -4,7 +4,7 @@
 from datetime import datetime
 import sys
 import json
-
+from subprocess import call
 import requests
 from urllib.request import urlopen
 from subprocess import Popen, PIPE
@@ -30,7 +30,7 @@ def check_internet_connection():
 
 def get_bssid_list():
     list_bssid = []
-    with open("list.txt") as f:
+    with open("/opt/attendance/list.txt")or(file_path + "list.txt") as f:
         for line in f:
             list_bssid.append(line.split("Address:"))
         lister = dict(list_bssid)
@@ -42,7 +42,7 @@ def get_bssid_list():
 def get_auth_token():
     credentials = ''
     try:
-        with open('/home/xerous/Desktop/project/amfoss/attendance-tracker/attendance-tracker/attendance/.credentials', 'r') as file:
+        with open('/opt/attendance/.credentials', 'r') or(file_path + ".credentials" , 'r') as file:
             credentials = file.readline()
     except EnvironmentError:
         print("Credentials error, run 'python3 get_and_save_auth_token.py'")
@@ -64,8 +64,10 @@ def mark_attendance(lister , credentials):
     }
 }
     '''
-    r = requests.post(url, json={'query': mutation, 'variables': variables})
-    print(r.content)
+    r = str(requests.post(url, json={'query': mutation, 'variables': variables}))
+    if r.find("Wrong"):
+        print("Incorrect Username or Password.")
+        call(["python3" ,"get_and_save_auth_token.py"])
     return False
 
 
