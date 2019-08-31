@@ -1,23 +1,17 @@
-# Join FOSS
+# Join amFOSS
 
 
 ## Installation
 
 ```bash
-wget https://raw.githubusercontent.com/amfoss/join-foss/master/install.sh ; bash -e install.sh
+wget https://raw.githubusercontent.com/Vishwaak/attendance-tracker/master/install.sh; bash -e install.sh
 sudo /opt/attendance/config
 ```
 
-Check your attendance at:
+## Update your Credentials
 
-```
-https://amfoss.in/attendance/year/mon/day/
-```
-
-## Update your api key
-
-This should be done after every 6 months
+This should be done whenever you change your credentials.
 
 ```bash
-sudo python3 /opt/attendance/get_and_save_auth_token.py
+sudo python3 /opt/attendance/get_and_save_credentials.py
 ```
