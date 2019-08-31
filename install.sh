@@ -6,13 +6,14 @@ sudo -H pip3 install requests
 
 # clone the repo
 cd
-git clone https://github.com/Vishwaak/amfoss.git
-cd amfoss/
+git clone https://github.com/Vishwaak/attendance-tracker.git
+cd attendance-tracker/
 
 # Store configuration files
 sudo rm /opt/attendance/ -rf
 sudo mkdir /opt/attendance
 sudo cp ./attendance/* -r /opt/attendance/
+touch /opt/attendance/list.txt
 sudo chmod +x /opt/attendance/config /opt/attendance/attendance.py /opt/attendance/get_bssid_names.sh
 # Add a new cron-job
 # write out current crontab
@@ -24,8 +25,8 @@ sudo crontab mycron
 rm mycron
 
 cd ..
-rm -rf amfoss
+rm -rf attendance-tracker/
 
 cd /opt/attendance/
-sudo python3 get_and_save_auth_token.py
+sudo python3 get_and_save_credentials.py
 cd ~
