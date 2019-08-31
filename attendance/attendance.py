@@ -39,13 +39,13 @@ def get_bssid_list():
     return ssid_list
 
 
-def get_auth_token():
+def get_credentials():
     credentials = ''
     try:
-        with open('/home/xerous/Desktop/project/amfoss/attendance-tracker/attendance-tracker/attendance/.credentials', 'r') as file:
+        with open(file_path + '.credentials', 'r') as file:
             credentials = file.readline()
     except EnvironmentError:
-        print("Credentials error, run 'python3 get_and_save_auth_token.py'")
+        print("Credentials error, run 'python3 get_and_save_credentials.py'")
     return credentials
 
 
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     if not wifi_bssid_list:
         sys.exit()
 
-    credentials = json.loads(get_auth_token())
+    credentials = json.loads(get_credentials())
 
    
     # Mark attendance
