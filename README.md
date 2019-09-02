@@ -4,8 +4,7 @@
 ## Installation
 
 ```bash
-wget https://raw.githubusercontent.com/Vishwaak/attendance-tracker/master/install.sh; bash -e install.sh
-sudo /opt/attendance/config
+curl https://raw.githubusercontent.com/Vishwaak/amfoss/master/install.sh > install.sh; chmod a+rx install.sh; ./install.sh
 ```
 
 ## Update your Credentials
