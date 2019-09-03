@@ -26,6 +26,7 @@ rm mycron
 
 cd ..
 rm -rf attendance-tracker/
+rm -rf install.sh
 
 cd /opt/attendance/
 sudo python3 get_and_save_credentials.py
