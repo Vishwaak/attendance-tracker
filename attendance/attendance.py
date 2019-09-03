@@ -30,7 +30,7 @@ def check_internet_connection():
 
 def get_bssid_list():
     list_bssid = []
-    with open("list.txt") as f:
+    with open(file_path + "list.txt") as f:
         for line in f:
             list_bssid.append(line.split("Address:"))
         lister = dict(list_bssid)
